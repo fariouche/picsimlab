@@ -22,6 +22,7 @@ override CXXFLAGS+= -D_ARCH_=\"Linux64_WX\" -D_DATE_=\"${DATE}\"
 override CXXFLAGS+= -D_VERSION_=\"$(VERSION)\" -Wall -g -O2 -flto=auto -D_SHARE_=\"../share/picsimlab/\" \
 -D_LIB_=\"../lib/picsimlab/\" `lxrad-config --cxxflags`
 override CXXFLAGS+= -DEXT_BROWSER
+override CXXFLAGS+= -I${prefix}/include
 #override CXXFLAGS+=-fsanitize=address
 #override CXXFLAGS+=-fno-omit-frame-pointer
 
