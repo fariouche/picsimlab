@@ -394,7 +394,7 @@ void cpart_vterm::ConfigurePropertiesWindow(void) {
     SetPCWComboWithPinNames("combo2", pins[0]);
     SetPCWComboWithPinNames("combo3", pins[1]);
 
-    SpareParts.WPropCmd("combo5", PWA_COMBOSETITEMS, "1200,2400,4800,9600,19200,38400,57600,115200,");
+    SpareParts.WPropCmd("combo5", PWA_COMBOSETITEMS, "1200,2400,4800,9600,19200,38400,57600,115200,230400,460800,921600,1000000,");
     SpareParts.WPropCmd("combo5", PWA_COMBOSETTEXT, std::to_string(vterm_speed).c_str());
 }
 

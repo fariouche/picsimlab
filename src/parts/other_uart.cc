@@ -208,7 +208,7 @@ void cpart_UART::ConfigurePropertiesWindow(void) {
         SpareParts.WPropCmd("combo5", PWA_COMBOSETTEXT, uart_name);
     }
 
-    SpareParts.WPropCmd("combo6", PWA_COMBOSETITEMS, "1200,2400,4800,9600,19200,38400,57600,115200,");
+    SpareParts.WPropCmd("combo6", PWA_COMBOSETITEMS, "1200,2400,4800,9600,19200,38400,57600,115200,230400,460800,921600,1000000,");
     SpareParts.WPropCmd("combo6", PWA_COMBOSETTEXT, std::to_string(uart_speed).c_str());
 }
 
