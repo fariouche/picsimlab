@@ -75,7 +75,7 @@ echo -e "\033[1;32m ---------------------- build and install tty0tty -----------
 cd tty0tty/module
 git pull --no-rebase
 #cl sudo ./dkms-install.sh
-#cl make clean;make -j$(nproc)
+cl make clean;make -j$(nproc)
 #cl sudo make install
 #sudo usermod -a -G dialout `whoami`
 #cl sudo modprobe tty0tty
