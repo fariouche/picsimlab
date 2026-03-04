@@ -8,7 +8,8 @@ echo "INSTDIR=${INSTDIR}"
 mkdir -p ${INSTDIR}/usr/{lib,bin}
 PATH=${INSTDIR}/usr/bin:$PATH
 
-function is_installed(cmd) {
+function is_installed() {
+  cmd="$1"
   if ! command -v $cmd >/dev/null 2>&1
   then
     echo "$cmd is not installed"
@@ -16,9 +17,10 @@ function is_installed(cmd) {
   fi
 }
 
-function is_devlib_installed(lib) {
-  pkg-config $lib
-  if [[ "$?" != "0" ]]
+function is_devlib_installed() {
+  lib="$1"
+  
+  if ! pkg-config "$lib"
   then
     echo "$lib not installed"
     exit 1
@@ -52,7 +54,7 @@ git clone --depth=1 https://github.com/lcgamboa/lxrad.git
 git clone --depth=1 https://github.com/lcgamboa/tty0tty.git
 git clone --depth=1 https://github.com/lcgamboa/simavr.git
 git clone --depth=1 https://github.com/lcgamboa/uCsim_picsimlab.git
-git clone --depth=1 --no-single-branch https://github.com/lcgamboa/qemu.git	
+git clone --depth=1 --no-single-branch https://github.com/fariouche/qemu_picsimlab.git qemu
 set -e
 echo -e "\033[1;32m ---------------------- build and install picsim ------------------------- \033[0m"
 cd picsim
@@ -126,5 +128,6 @@ echo -e "\033[1;32m ---------------------- done! -------------------------------
 echo -e "\033[1;32m logout your session and login to use serial \033[0m"
 
 if xhost > /dev/null 2>&1 ; then
-cl picsimlab
+export LD_LIBRARY_PATH=${INSTDIR}/lib:${INSTDIR}/usr/lib
+cl ${INSTDIR}/bin/picsimlab
 fi
